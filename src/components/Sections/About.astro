@@ -72,8 +72,11 @@ const certs = (await getCollection("certs")).reverse();
         href="/cv.pdf" target="_blank" class="get-cv button">Get CV <span>🚀</span></a>
       <a 
         data-aos="fade-right"
-        href="" class="email-me button">Email Me <span>✍🏻</span></a>
+        href="mailto:contact@pabloprx.tech" class="email-me button">Email Me ✍🏻</a>
     </footer>
+    <div class="popup-msg">
+      <p>Copied to clipboard</p>
+    </div>
       
   </aside>
   <main>
@@ -82,14 +85,6 @@ const certs = (await getCollection("certs")).reverse();
       data-aos-delay="200"
       class="description-container">
       <Content />
-      <!-- <h2>Soy un desarrollador web autodidacta</h2>
-      <h3>con habilidades en el backend, bases de datos y frontend.</h3>
-      <p>Me considero un perfeccionista apasionado que ama programar 
-        y dedicarle tiempo a cada detalle para que todo funcione perfectamente.</p>
-      <p>Estoy comprometido y disponible para colaborar en proyectos y seguir aprendiendo 
-        para seguir mejorando en esta industria que tanto me apasiona. </p>
-      <p>Si estás buscando un desarrollador web comprometido, detallista y en constante
-        evolución, ¡no dudes en contactarme! 🙌💼</p> -->
     </section>
     <section 
       data-aos="fade-up"
@@ -107,7 +102,41 @@ const certs = (await getCollection("certs")).reverse();
   </main>
 </div>
 
+<script>
+  const emailBtn = document.querySelector(".email-me");
+  const popupMsg = document.querySelector(".popup-msg");
+  emailBtn?.addEventListener("mouseover", () => {
+      emailBtn.innerHTML = "contact@pabloprx.tech";
+      popupMsg?.classList.add("popup-msg--active");
+      navigator.clipboard.writeText("contact@pabloprx.tech");
+  });
+
+  emailBtn?.addEventListener("mouseout", () => {
+      emailBtn.innerHTML = "Email Me ✍🏻";
+      popupMsg?.classList.remove("popup-msg--active");
+  });
+</script>
+
+
 <style lang="scss" is:global>
+  .popup-msg{
+    color: transparent;
+    text-align: center;
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 12px;
+    transition: all .2s ease-in-out;
+    display: none;
+    order: 2;
+    &--active{
+      display: inline;
+      color: rgba(229, 148, 82, .7);
+      background-color: rgba(255, 255, 255, .1);
+      box-shadow: 0 0 0 1px rgba(217, 217, 217, 0.2);
+    }
+  }
+
   .certs{
     &__container{
       margin-top: 1rem;
@@ -247,16 +276,16 @@ const certs = (await getCollection("certs")).reverse();
       flex-direction: row;
       flex-wrap: wrap;
       row-gap: .5rem;
-      
       justify-content: space-around;
       & > .button {
-        width: 60%;
+        font-weight: bold;
+        width: 90%;
         text-align: center;
         white-space: nowrap;
         color: rgba(217, 217, 217, 0.95);
         font-family: 'CaskaydiaCove';
-        font-size: clamp(15px, 1.2vw, 1.2rem);
-        padding: .6rem;
+        font-size: clamp(15px, 1vw, 1rem);
+        padding: .6rem 1rem;
         text-decoration: none;
         background: rgba(2, 1, 10, 0.5);
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);

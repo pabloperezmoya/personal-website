@@ -3,8 +3,8 @@
 # Pending
 - [x] Resize images.
 - [x] Change font format (less weight).
-- [ ] Adjust about font-size.
-- [ ] Adjust about-section container on mobile devices.
+- [x] Adjust about font-size.
+- [x] Adjust about-section container on mobile devices.
 - [ ] Add `href`'s to the buttons on the about.
 - [ ] Add internationalization
 - [ ] Add open on new tab for certs 
