@@ -5,7 +5,7 @@
 - [x] Change font format (less weight).
 - [x] Adjust about font-size.
 - [x] Adjust about-section container on mobile devices.
-- [ ] Add `href`'s to the buttons on the about.
+- [x] Add `href`'s to the buttons on the about.
 - [ ] Add internationalization
 - [ ] Add open on new tab for certs 
 - [ ] Seo optimize

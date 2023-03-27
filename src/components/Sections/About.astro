@@ -74,7 +74,7 @@ const certs = (await getCollection("certs")).reverse();
         data-aos="fade-right"
         href="mailto:contact@pabloprx.tech" class="email-me button">Email Me ✍🏻</a>
     </footer>
-    <div class="popup-msg">
+    <div class="popup-msg popup-msg--active">
       <p>Copied to clipboard</p>
     </div>
       
@@ -106,9 +106,9 @@ const certs = (await getCollection("certs")).reverse();
   const emailBtn = document.querySelector(".email-me");
   const popupMsg = document.querySelector(".popup-msg");
   emailBtn?.addEventListener("mouseover", () => {
+      navigator.clipboard.writeText("contact@pabloprx.tech");
       emailBtn.innerHTML = "contact@pabloprx.tech";
       popupMsg?.classList.add("popup-msg--active");
-      navigator.clipboard.writeText("contact@pabloprx.tech");
   });
 
   emailBtn?.addEventListener("mouseout", () => {
@@ -131,9 +131,8 @@ const certs = (await getCollection("certs")).reverse();
     order: 2;
     &--active{
       display: inline;
-      color: rgba(229, 148, 82, .7);
-      background-color: rgba(255, 255, 255, .1);
-      box-shadow: 0 0 0 1px rgba(217, 217, 217, 0.2);
+      color: #4673BD;
+      background-color: rgba(255, 255, 255, .03);
     }
   }
 
@@ -179,7 +178,7 @@ const certs = (await getCollection("certs")).reverse();
       display: flex;
       align-items: center;
       gap: .5rem;
-      font-size: clamp(10px, 1vw, 30px);
+      font-size: clamp(10px, 3vw, 15px);
       white-space: nowrap;
       &__circle::after{  
         font-family: 'CaskaydiaCovey', sans-serif;
