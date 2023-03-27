@@ -1,0 +1,186 @@
+---
+import TechCard from "./TechCard.astro";
+
+type Tech = {
+  name: string;
+  imageUrl: string;
+}
+
+export interface Props {
+  title: string;
+  description: string;
+  githubUrl: string;
+  imageUrl: string;
+  techList: Tech[];
+}
+
+const {title, description, githubUrl, imageUrl, techList } = Astro.props;
+---
+<article class="card">
+  
+  <header class="card__header">
+    <img class="image-header" src={imageUrl} alt="">
+    
+    <main class="title-container">
+      <h2>{title}</h2>
+      <a class="button-container" href={githubUrl} target="_blank">
+        <p class="repo-text">view on</p>
+        <img class="repo-img" src="/icons/github.png" alt="Github cat icon"/>
+      </a>
+    </main>
+  </header>
+  
+  <p class="card__content">{description}</p>
+  
+  <footer class="card__footer">
+    <ul class="techused__container">
+      {techList.map((tech) => {
+        return (
+          <li class="tech-item">
+            <TechCard techTitle={tech.name} imgUrl={tech.imageUrl} />
+          </li>
+        )
+      })
+      }
+    </ul>
+  </footer>
+</article>
+
+
+<style lang="scss">
+  .card__footer{
+    & .techused__container{
+      list-style: none;
+      display: grid;
+      row-gap: .5rem;
+      column-gap: 1rem;
+      justify-content: start;
+      align-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(80px, auto));
+      // grid-template-columns: repeat(auto-fill, 90px);
+      grid-auto-rows: auto;
+    }
+  }
+  .button-container{
+    display: flex;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: #ECECEC;
+    font-weight: bold;
+    padding: .3rem .6rem 0.3rem .6rem;
+    justify-content: center;
+    background-color: rgba(2, 1, 10, 0.5);
+    border-radius: 14px;
+    border: 1px solid #ECECEC;
+    align-items: center;
+    
+    transition: all .1s ease-out;
+    & .repo-text{
+      // font-size: 2rem;
+      font-size: clamp(10px, 2vw, 12px);
+      white-space: nowrap;
+    }
+    & .repo-img{
+      max-width: 23px;
+    }
+    &:hover{
+      background-color: rgba(2, 1, 10, 0.1);
+      box-shadow: 2px 1px 4px 1px rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .card{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border: 1px solid rgba(217, 217, 217, 0.16);
+    color: white; // modify
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: 'CaskaydiaCove';
+    backdrop-filter: blur(65px);
+    transition: all .1s ease-in-out;
+    opacity: .8;
+    &:hover{
+      background-color: rgba(2, 1, 10, .2);
+      opacity: 1;
+      scale: 102%;
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    &__header{
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+
+      & .image-header{
+        max-width: 100%;
+        width: clamp(50px, 100%, 400px);
+        object-fit: cover;
+        border-radius: 12px;
+        transition: all .05s ease-out;
+        &:hover{
+          transform: scale(1.5);
+        }
+      }
+
+      & main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        
+
+        & h2{
+          white-space: nowrap;
+          font-size: clamp(16px, 6vw, 23px);
+          font-weight: bold;
+          justify-self: start;
+          color: #ECECEC;
+          text-shadow: 0px 0px 29px rgba(236, 236, 236, 0.2);
+        }
+        & a{
+          justify-self: end;
+        }
+        
+      }
+    }
+
+    &__content{
+      font-size: clamp(10px, 4vw, 16px);
+      color: rgba(217, 217, 217, 1);
+    }
+  }
+  @media screen and (max-width: 980px){
+    .repo-text{
+      display: none; 
+    }
+  }
+  @media screen and (max-width: 920px){
+    .repo-text{
+      display: inline;
+    }
+  }
+  @media screen and (max-width: 650px){
+    .title-container{
+      display: flex !important;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .repo-text{
+      display: none;
+      // font-size: clamp(6px, 2.5vw, 18px) !important;
+    }
+    .image-header{
+      display: none;
+    }
+    .button-container{
+      width: fit/content;
+    }
+  }
+  @media screen and (max-width: 625px){
+    .repo-text{
+      display: inline;
+      font-size: clamp(6px, 2.5vw, 18px) !important;
+    }
+  }
+</style>

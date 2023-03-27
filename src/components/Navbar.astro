@@ -1,0 +1,68 @@
+---
+
+---
+
+<div 
+  class="container">
+  <nav>
+    <ul>
+      <li data-aos="fade-in" data-aos-delay="50"><a class="nav-item active" href="#home">Home</a>
+      </li>
+      <li data-aos="fade-in" data-aos-delay="50"><a class="nav-item" href="#projects">Projects</a>
+      </li>
+      <li data-aos="fade-in" data-aos-delay="50"><a class="nav-item" href="#about">About</a>
+      </li>
+    </ul>
+  </nav>  
+</div>
+
+<style>
+  .container{
+    position: fixed;
+    
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 50px;
+
+    background: linear-gradient(90.12deg, rgba(229, 148, 82, 0.2) -177.24%, rgba(28, 57, 105, 0.2) 156.05%);
+    border: 2px solid rgba(217, 217, 217, 0.2);
+    border-radius: 32px;
+    
+    display: flex;
+    padding: .1rem;
+    align-items: center;
+    /* opacity: .6;
+    transition: opacity .3s ease-in-out;  */
+  }
+  /* .container:hover, .container:focus{
+    opacity: 1;
+  } */
+
+  nav{
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  ul{
+    list-style: none;
+    gap: 1vw;
+    display: flex;
+  }
+  li{
+    margin-top: .15rem;
+  }
+  a{
+    cursor: default;
+    text-decoration: none;
+    color: white;
+    font-family: 'CaskaydiaCove', sans-serif;
+    font-size: 1.2rem;
+    padding: .4rem 1rem .2rem 1rem;
+    background: transparent;
+    transition: all .3s ease-in-out;
+    border-radius: 32px;
+  }
+  a:hover{
+    background: rgba(2, 1, 10, 0.2);
+  }
+</style>

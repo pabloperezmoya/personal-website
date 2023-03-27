@@ -1,0 +1,16 @@
+---
+export interface Props {
+  title: string;
+  imgUrl: string;
+  credlyLink: string;
+}
+
+const {title, imgUrl, credlyLink} = Astro.props;
+
+---
+
+<li class="certs__item">
+  <a href={credlyLink} id={title}>
+    <img class="certs__img" src={imgUrl}>
+  </a>
+</li>

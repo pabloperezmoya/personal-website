@@ -1,0 +1,41 @@
+---
+import ProyectCard from "../ProyectCard.astro";
+import { getCollection } from "astro:content";
+
+const projectsUnordered = (await getCollection("projects"));
+
+const projects = projectsUnordered.sort((a, b) => {
+  return a.data.order - b.data.order;
+});
+
+---
+
+<div 
+  class="projects-container">
+  <ul class="grid-container">
+      {projects.map((project, idx) => {
+        return ( 
+        <li 
+          data-aos={idx % 2 === 0 ? 'fade-up' : 'fade-down'}
+          class="item">
+          <ProyectCard {...project.data} />
+        </li>
+        )
+      })}
+  </ul>
+</div>
+
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+  /* .item:hover{
+    z-index: 1;
+  } */
+</style>

@@ -1,0 +1,402 @@
+---
+// About content
+import { getCollection} from "astro:content";
+import { getEntryBySlug } from 'astro:content';
+import CertCard from "../CertCard.astro";
+const aboutContent = await getCollection("about");
+const { Content } = await aboutContent[0].render();
+
+
+// TechCard logic
+export type IconObj = {
+  techTitle: string;
+  imgUrl: string;
+}
+
+import TechCard from "../TechCard.astro";
+const { data: {icon_list} } = await getEntryBySlug("icons", "icon_list");
+
+
+const certs = (await getCollection("certs")).reverse();
+---
+
+<div 
+  class="about-container">
+  <aside class="perfil">
+    <header class="perfil__header">
+      <img 
+        data-aos="fade-down"
+        src="/me.png" class="perfil-img" alt="">
+      
+      <div class="accounts">
+        <a 
+          data-aos="fade-left"
+          class="accounts__link"href="">
+          <img class="accounts__link__image" src="/icons/linkedin.png" alt="">
+        </a>
+        <a
+          data-aos="fade-right" 
+          class="accounts__link"href="">
+          <img class="accounts__link__image" src="/icons/github.png" alt="">
+        </a>
+
+      </div>  
+    </header>
+    <div 
+      data-aos="zoom-out"
+      class="statusbar">
+      <p class="statusbar__text">
+        <span class="statusbar__text__circle"></span>
+        <span>Disponible para nuevos
+          <span class="statusbar__text__highlight">desafios</span>
+        </span>
+      </p>
+    </div>
+    <section 
+      class="perfil__content">
+      <h3>Pablo Pérez</h3>
+      <p>Valparaiso, Chile <span class="country__container"><img class="country__flag" src="/chile_flag.svg" alt=""></span></p>
+      <div class="certs__container">
+        <ul class="certs__list">
+          {certs.map((cert) => (
+            <CertCard {...cert.data}/>
+          ))}
+        </ul>
+      </div>
+    </section>
+    <footer 
+      data-aos="fade-up"
+      class="perfil__footer">
+      <a 
+        data-aos="fade-left"
+        href="/cv.pdf" target="_blank" class="get-cv button">Get CV <span>🚀</span></a>
+      <a 
+        data-aos="fade-right"
+        href="" class="email-me button">Email Me <span>✍🏻</span></a>
+    </footer>
+      
+  </aside>
+  <main>
+    <section 
+      data-aos="fade-up"
+      data-aos-delay="200"
+      class="description-container">
+      <Content />
+      <!-- <h2>Soy un desarrollador web autodidacta</h2>
+      <h3>con habilidades en el backend, bases de datos y frontend.</h3>
+      <p>Me considero un perfeccionista apasionado que ama programar 
+        y dedicarle tiempo a cada detalle para que todo funcione perfectamente.</p>
+      <p>Estoy comprometido y disponible para colaborar en proyectos y seguir aprendiendo 
+        para seguir mejorando en esta industria que tanto me apasiona. </p>
+      <p>Si estás buscando un desarrollador web comprometido, detallista y en constante
+        evolución, ¡no dudes en contactarme! 🙌💼</p> -->
+    </section>
+    <section 
+      data-aos="fade-up"
+      class="skills-container">
+      <h2>Tech Stack</h2>
+      <ul class="list-item-container">
+        {icon_list.map((iconObj:IconObj) => (
+            <li>
+              <TechCard {...iconObj}/>
+            </li>
+            ))
+          }
+      </ul>
+    </section>
+  </main>
+</div>
+
+<style lang="scss" is:global>
+  .certs{
+    &__container{
+      margin-top: 1rem;
+    }
+    &__list{
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+    }
+    &__item{
+      padding: .2rem;            
+      border: 1px solid rgba(217, 217, 217, 0.16);
+      border-radius: 12px;
+      opacity: .7;
+      transition: all .1s ease-in-out;
+      &:hover{
+        opacity: 1;
+        scale: 1.6;
+        background-color: rgba(255, 255, 255, .15);
+      }
+    }
+    &__img{
+      width: 60px;
+      width: clamp(30px, 5vw, 60px);
+    }
+  }
+
+  .statusbar{
+    display: flex;
+    color: rgba(217, 217, 217, 0.9);
+    font-size: .8rem;
+    padding-left: .7rem;
+    padding-right: .7rem;
+    justify-content: center;
+    background: linear-gradient(90deg, rgba(229, 148, 82, 0.2) 0%, rgba(28, 57, 105, 0.2) 100%);
+    border: 2px solid rgba(217, 217, 217, 0.2);
+    border-radius: 32px;
+    align-items: center;
+    &__text{
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: clamp(10px, 1vw, 30px);
+      white-space: nowrap;
+      &__circle::after{  
+        font-family: 'CaskaydiaCovey', sans-serif;
+        font-size: 1.2rem;
+        color: #E59452;
+        animation: blink-dot 2s infinite ease-out;
+        text-shadow: 0px 0px 10px #E59452 ;
+        content: "•";
+      }
+      &__highlight{
+        background: linear-gradient(90deg, #E59452 10.88%, #4673BD 92.84%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+    }
+    
+  }
+
+  @keyframes blink-dot{
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
+  .accounts{
+    display: flex;
+    position: relative;
+    height: 30px; // Separator cos is a relative element
+    left: clamp(40px, 10vw, 10rem);
+    bottom: clamp(20px, 5vw, 2rem);
+    width: max-content;
+
+    gap: .5rem;
+    &__link{
+      &__image{
+        // max-width: 50px;  
+        width: clamp(20px, 4vw, 40px);
+      }
+    }
+  }
+
+  .perfil{
+    color: rgba(236, 236, 236, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    &__header{
+      display: flex;
+      flex-direction: column;
+    }
+    &__content{
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding: .3rem .6rem;
+      padding: 0.5rem 1rem;
+      background-color: rgba(255, 255, 255, 0.01);
+      & > h3{
+        font-size: 1.7rem; // Made responsive
+        text-shadow: 0px 0px 10px rgba(236, 236, 236, .2);
+      }
+      & > p{
+        color: rgba(217, 217, 217, 0.95);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem
+      }
+      & .country{
+        &__container{
+          width: max-content;
+        }
+        &__flag{
+          vertical-align: middle;
+          width: clamp(20px, 1.8vw, 30px);
+        }
+      }
+    }
+    &__footer{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: .5rem;
+      
+      justify-content: space-around;
+      & > .button {
+        width: 60%;
+        text-align: center;
+        white-space: nowrap;
+        color: rgba(217, 217, 217, 0.95);
+        font-family: 'CaskaydiaCove';
+        font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+        padding: .6rem;
+        text-decoration: none;
+        background: rgba(2, 1, 10, 0.5);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+        transition: all .1s ease-in-out;
+        border-top: 1px solid rgba(236, 236, 236, 1);
+        border-left: 1px solid rgba(236, 236, 236, .6);
+        border-right: 1px solid rgba(236, 236, 236, 1);
+        border-bottom: 2px solid rgba(236, 236, 236, 1);
+
+        transition: all .2s ease-in-out;
+        & > span{
+          
+        }
+        &:hover{
+          background: rgba(2, 1, 10, 0.3);
+          box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.25);
+        }
+      }
+    }
+  }
+  .description-container{
+    color: rgba(217, 217, 217, 0.95);
+    font-size: 1.2rem;
+    & .title{
+      color: rgba(236, 236, 236, 1);
+      margin-bottom: .2rem;
+      font-size: 2.4rem;
+    }
+    & .subtitle{
+      color: rgba(236, 236, 236, 1);
+      margin-bottom: .7rem;
+      font-size: 1.7rem;
+    }
+  }
+  .skills-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .skills-container > h2{
+      font-family: 'CaskaydiaCove Nerd Font';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 37px;
+      color: rgba(236, 236, 236, 1);
+  }
+
+  .list-item-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1rem;
+    list-style: none;
+  }
+
+  .about-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    font-family: 'Inter', sans-serif;
+    gap: 2rem
+  }
+
+  @media (max-width: 768px) and (min-width: 595px) {
+    .about-container{
+      grid-template-columns: 1fr;
+    }
+    .statusbar{
+      height: fit-content;
+      width: 80%;
+      justify-self: center;
+      align-self: center;
+      margin-bottom: 1rem;
+      margin-top: -1rem;
+      order: 2;
+    }
+    .perfil{
+      width: 60vw;
+      margin: 0 auto;
+      padding: 1rem;
+      border-radius: 12px;
+      // background-color: rgba(2, 1, 10, 0.5);
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      &__header{
+        
+      }
+      &__content{
+        align-self: flex-start;
+        height: min-content;
+        background-color: transparent;
+      }
+      &__footer{
+        order: 2;
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+        justify-content: space-around;
+        gap: 1rem;
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 595px){
+    .about-container{
+      grid-template-columns: 1fr;
+    }
+    .statusbar{
+      height: fit-content;
+      width: 80%;
+      justify-self: center;
+      align-self: center;
+      margin-bottom: 1rem;
+      margin-top: -1rem;
+      order: 2;
+    }
+    .perfil{
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      // background-color: rgba(2, 1, 10, 0.5);
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      &__header{
+        
+      }
+      &__content{
+        align-self: flex-start;
+        height: min-content;
+        background-color: transparent;
+      }
+      &__footer{
+        order: 2;
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+        justify-content: space-around;
+        gap: 1rem;
+        margin: 0;
+      }
+    }
+    
+  }
+</style>

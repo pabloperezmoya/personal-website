@@ -1,0 +1,38 @@
+---
+export interface Props{
+  techTitle: string;
+  imgUrl: string;
+}
+
+let { techTitle, imgUrl } = Astro.props;
+
+---
+
+<article>
+  <p>{techTitle}</p>
+  <img src={imgUrl} alt={techTitle}>
+</article>
+
+
+<style>
+  article{
+    font-family: 'CaskaydiaCove', monospace;
+    width: fit-content;
+    display: flex;
+    border: 1px solid rgba(217, 217, 217, 0.16);
+    border-radius: 12px;
+    gap: .3rem;
+    padding: .4rem .4rem .3rem .6rem;
+    
+  }
+  p{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #D9D9D9;
+    text-transform: capitalize;
+    
+  }
+  img{
+    max-height: 20px;
+  }
+</style>

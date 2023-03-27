@@ -1,0 +1,28 @@
+---
+import LogoHeader from "../components/LogoHeader.astro";
+import Navbar from "../components/Navbar.astro";
+---
+
+<div class="header-container">
+  <LogoHeader/>
+  <Navbar/>
+</div>
+
+<style>
+  .header-container{
+
+    border: 1px;
+    z-index: 10;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50px;
+    opacity: .8;
+    transition: opacity .3s ease-in-out; 
+  }
+  .header-container:hover, .header-container:active{
+    opacity: 1;
+    
+  }
+</style>

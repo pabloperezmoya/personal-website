@@ -1,15 +1,37 @@
 ---
+import Layout from "../layout/Layout.astro";
+import Home from "../components/Sections/Home.astro";
+import Projects from "../components/Sections/Projects.astro";
+import About from "../components/Sections/About.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- <article data-aos="fade-in" data-aos-delay="500" id="home"> -->
+  <article id="home" class="section-container">
+    <Home/>
+  </article>
+  <article id="projects">
+  <!-- <article id="projects" class="section-container"> -->
+    <Projects/>
+  </article>
+  <article id="about">
+  <!-- <article id="about" class="section-container"> -->
+    <About/>
+  </article>
+</Layout>
+
+
+
+<style>
+  article{
+    /* border: 1px solid greenyellow; */
+    height: calc(100vh - 112px);
+    height: 100%;
+    min-height: 78vh;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+  /* #about{
+    height: 100%;
+  } */
+</style>

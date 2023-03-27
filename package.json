@@ -10,6 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.1.5"
+    "@astrojs/mdx": "^0.18.2",
+    "aos": "^2.3.4",
+    "astro": "^2.1.5",
+    "astro-compress": "^1.1.35",
+    "sass": "^1.59.3"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.4"
   }
 }

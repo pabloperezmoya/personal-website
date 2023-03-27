@@ -1,0 +1,75 @@
+---
+import '../components/GlobalStyles.astro'
+import '../components/Background.astro'
+import Background from '../components/Background.astro';
+import Header from './Header.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/fi.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+    <!-- <link rel="preload" href="/CaskaydiaCove[wght].ttf" as="font" type="font/ttf" crossorigin> -->
+		<title>Pablo 🤓 Personal Web</title>
+	</head>
+	<body>
+    <Header/>
+    <div class="content-container">
+      <slot />
+    </div>
+    <footer class="footer-container">
+      <h3>Desarrollado moviendo las manitas👋</h3>
+      <p>Los derechos de imagenes y trademarks a quienes les corresponda🥴</p>
+    </footer>
+    <Background/>
+  </body>
+</html>
+
+
+<style>
+  .footer-container{
+    font-family: 'CaskaydiaCove', sans-serif;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .btn{
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+  body{
+    margin: 0 auto;
+    width: 90vw;
+    max-width: 1200px;
+  }
+
+  .content-container{
+    background-color: transparent;
+    margin-top: 7rem;
+  }
+</style>
+
+
+<script>
+  // Scroll and sections [TODO]: Modify the ../../ routes!!!
+  import {
+    scrollToSelectedSection, 
+    changeSelectionOnScroll, 
+    scrollOnPageLoad, 
+    changeBackgroundColor
+  } from '../utils.js';
+  scrollToSelectedSection();
+  changeSelectionOnScroll();
+  scrollOnPageLoad();
+  changeBackgroundColor();
+
+  // Animation on scroll
+  import AOS from 'aos';
+  import 'aos/dist/aos.css'; // You can also use <link> for styles
+  // ..
+  AOS.init();
+</script>
