@@ -6,12 +6,13 @@
     <h2 
       data-aos="fade-up"
       class="greeting__phrase">Soy Pablo</h2>
+    <p class="greeting__emoji rocket-emoji">🚀</p>
     <img 
       data-aos="fade-up"
       class="greeting__image perfil-img" src="/me.png" alt="Image of me, a perfil pic with a gradient background">
     <p 
       data-aos="fade-right"
-      class="greeting__text">Estoy en un <span class="highlight">constante</span> proceso de aprendizaje</p>
+      class="greeting__text">Estoy en un <span class="highlight">constante</span> proceso de aprendizaje.</p>
     <div class="vector">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
     </div>
@@ -20,6 +21,38 @@
 
 
 <style lang="scss">
+  .rocket-emoji{
+    position: absolute;
+
+    z-index: 10;
+    animation: rocket-animation 6s forwards, change-size 5s infinite 6s ease-in-out alternate !important;
+    transition: transform 2s ease-in-out;
+  }
+  @keyframes change-size{
+    50%{
+      transform: rotate(-4deg);
+    }
+    100%{
+      transform: rotate(4deg);
+    }
+  }
+  @keyframes rocket-animation{
+    0%{
+      top: 100%;
+      left: -60%;
+    }
+    50%{
+      top: 20%;
+      left: 60%;
+      rotate: -10deg;
+    }
+    100%{
+      top: 30%;
+      left: 50%;
+      rotate: -45deg;
+    }
+  }
+
   .vector{
     position: absolute;
     bottom: 0;
@@ -69,7 +102,7 @@
       max-height:400px;
 
       border-radius: 400px;
-      justify-self: center;
+      justify-self: end;
       align-self: center;
       box-shadow: 0px 0px 100px rgba(0, 0, 0, .3);
     }
