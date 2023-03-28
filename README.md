@@ -8,4 +8,4 @@
 - [x] Add `href`'s to the buttons on the about.
 - [ ] Add internationalization
 - [x] Add open on new tab for certs 
-- [ ] Seo optimize
+- [x] Seo optimize

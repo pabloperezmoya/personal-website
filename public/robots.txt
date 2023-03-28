@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /me.png
+
+Sitemap: https://pabloprx.tech/sitemap-index.xml

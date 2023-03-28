@@ -3,6 +3,7 @@ import '../components/GlobalStyles.astro'
 import '../components/Background.astro'
 import Background from '../components/Background.astro';
 import Header from './Header.astro';
+import { SEO } from 'astro-seo';
 ---
 
 <html lang="en">
@@ -11,8 +12,25 @@ import Header from './Header.astro';
 		<link rel="icon" type="image/svg+xml" href="/fi.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-    <!-- <link rel="preload" href="/CaskaydiaCove[wght].ttf" as="font" type="font/ttf" crossorigin> -->
-		<title>Pablo 🤓 Personal Web</title>
+    <link rel="sitemap" href="/sitemap-index.xml">
+		<!-- <title>Pablo 🤓 Personal Web</title> -->
+    <SEO
+      title="Pablo - Web Dev Portfolio 🚀 "
+      description="Explore my web development projects and contact me to collaborate on future projects. Let's bring your ideas to life together!"
+      openGraph={{
+        basic: {
+          title: "Explore my web development projects and contact me to collaborate on future projects. Let's bring your ideas to life together!",
+          type: "website",
+          image: "",
+        }
+      }}
+      twitter={{
+        creator: "@PrxPablo"
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/fi.png" }],
+      }}
+    />
 	</head>
 	<body>
     <Header/>
