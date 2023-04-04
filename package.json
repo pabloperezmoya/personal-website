@@ -12,8 +12,9 @@
   "dependencies": {
     "@astrojs/mdx": "^0.18.2",
     "@astrojs/sitemap": "^1.2.1",
+    "@astrojs/vercel": "^3.2.1",
     "aos": "^2.3.4",
-    "astro": "^2.1.5",
+    "astro": "^2.1.9",
     "astro-compress": "^1.1.35",
     "astro-seo": "^0.7.2",
     "sass": "^1.59.3"
