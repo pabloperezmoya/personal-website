@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: 'https://pabloprx.tech',
   integrations: [mdx(), compress(), sitemap()],
-  output: 'server',
+  output: 'static',
   adapter: vercelStatic({
     analytics: true
   })
