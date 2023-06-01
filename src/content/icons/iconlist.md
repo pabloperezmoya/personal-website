@@ -15,6 +15,7 @@ icon_list: [
   { techTitle: 'mysql', imgUrl: '/icons/mysql.png' },
   { techTitle: 'python', imgUrl: '/icons/python.png' },
   { techTitle: 'react', imgUrl: '/icons/react.png' },
+  { techTitle: 'nestjs', imgUrl: '/icons/nestjs.png' },
   { techTitle: 'sass', imgUrl: '/icons/sass.png' },
   { techTitle: 'svelte', imgUrl: '/icons/svelte.png' },
   { techTitle: 'javaScript', imgUrl: '/icons/javascript.png' },
