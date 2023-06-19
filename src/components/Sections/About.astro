@@ -74,7 +74,7 @@ const certs = (await getCollection("certs")).reverse();
         href="/cv.pdf" target="_blank" class="get-cv button">Get CV <span>🚀</span></a>
       <a 
         data-aos="fade-right"
-        href="mailto:contact@pabloprx.tech" class="email-me button">Email Me ✍🏻</a>
+        href="mailto:pablo08@duck.com" class="email-me button">Email Me ✍🏻</a>
     </footer>
     <div class="popup-msg">
       <p>Copied to clipboard</p>
@@ -108,8 +108,8 @@ const certs = (await getCollection("certs")).reverse();
   const emailBtn = document.querySelector(".email-me");
   const popupMsg = document.querySelector(".popup-msg");
   emailBtn?.addEventListener("mouseover", () => {
-      navigator.clipboard.writeText("contact@pabloprx.tech");
-      emailBtn.innerHTML = "contact@pabloprx.tech";
+      navigator.clipboard.writeText("pablo08@duck.com");
+      emailBtn.innerHTML = "pablo08@duck.com";
       popupMsg?.classList.add("popup-msg--active");
   });
 
